@@ -8,7 +8,7 @@ import style from './ContactList.module.css'
 export const ContactList = () => {
 
     const contacts = useSelector(getContacts);
-    const filter     = useSelector(getFilter);
+    const filter = useSelector(getFilter);
     const dispatch = useDispatch();
 
     const filterContacts = contacts.filter(contact =>
