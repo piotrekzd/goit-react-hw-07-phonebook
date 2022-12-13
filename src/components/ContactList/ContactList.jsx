@@ -21,18 +21,18 @@ export const ContactList = () => {
 
     return (
         <div>
-                <ul className={style.list}>
-                    {filterContacts.map(contact => {
-                        return (
-                            <li className={style.listItem} key={contact.id}>
-                                <p>{contact.name}: {contact.number}</p>
+            <ul className={style.list}>
+                {filterContacts.map(contact => {
+                    return (
+                        <li className={style.listItem} key={contact.id}>
+                            <p>{contact.name}: {contact.number}</p>
                                 <button className={style.btn} type="button" onClick={() => del(contact.id)}>
                                     Delete
                                 </button>
-                            </li>
-                        );
-                    })}
-                </ul>
+                        </li>
+                    );
+                })}
+            </ul>
         </div>
     );
 };
