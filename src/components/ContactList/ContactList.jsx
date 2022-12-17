@@ -9,7 +9,7 @@ const getVisibleContacts = (contacts, filter) => {
         return contacts;
     } else {
         return contacts.filter(contact => {
-            return contact.name.toLowerCase().includes(filter)
+            return contact.name.toLowerCase().includes(filter.toLowerCase());
         });
     };
 };
@@ -17,28 +17,23 @@ const getVisibleContacts = (contacts, filter) => {
 export const ContactList = () => {
     const contacts = useSelector(getContacts);
     const filter = useSelector(getFilter);
-    const visibleContacts = getVisibleContacts(contacts, filter);
     const dispatch = useDispatch();
-    // const filterContacts = contacts.filter(contact =>
-    //     contact.name.toLowerCase().includes(filter)
-    // );
-    const del = id=> {
+    const visibleContacts = getVisibleContacts(contacts, filter);
+    const del = id => {
         return dispatch(deleteContact(id));
     };
 
     return (
         <div>
             <ul className={style.list}>
-                {visibleContacts.map((contact) => {
-                    return (
-                        <li className={style.listItem} key={contact.id}>
-                            <p>{contact.name}: {contact.number}</p>
+                {visibleContacts.map((contact, id) => (
+                        <li className={style.listItem} key={id}>
+                            <p>{contact.name}: {contact.phone}</p>
                                 <button className={style.btn} type="button" onClick={() => del(contact.id)}>
                                     Delete
                                 </button>
                         </li>
-                    );
-                })}
+                ))}
             </ul>
         </div>
     );
@@ -46,7 +41,7 @@ export const ContactList = () => {
 
 ContactList.propTypes = {
     contacts: propTypes.arrayOf(
-        propTypes.exact({
+        propTypes.shape({
             id: propTypes.string.isRequired,
             name: propTypes.string.isRequired,
             number: propTypes.string.isRequired,
