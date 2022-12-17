@@ -24,8 +24,7 @@ export const App = () => {
       <ContactForm />
       <h2 className={style.header}>Contacts</h2>
       <Filter />
-      {isLoading && !error && <Loader />}
-      <ContactList />
+      {isLoading && !error ? <Loader /> : <ContactList />}
     </div>
   );
 };

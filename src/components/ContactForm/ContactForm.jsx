@@ -2,13 +2,11 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
-// import { nanoid } from 'nanoid';
 import style from './ContactForm.module.css';
 
 export const ContactForm = () => {
     const contacts = useSelector(getContacts);
     const dispatch = useDispatch();
-    // const id = nanoid();
 
     const addNewContact = e => {
         e.preventDefault();
