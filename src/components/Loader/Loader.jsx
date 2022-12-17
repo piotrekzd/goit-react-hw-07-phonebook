@@ -6,7 +6,7 @@ export const Loader = () => {
         <TailSpin
             height="80"
             width="80"
-            color="#add8e6"
+            color="#000000"
             ariaLabel="tail-spin-loading"
             radius="1"
             wrapperStyle={{}}

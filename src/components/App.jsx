@@ -22,8 +22,10 @@ export const App = () => {
     <div>
       <h1 className={style.header}>Phonebook</h1>
       <ContactForm />
+      <h2 className={style.header}>Contacts</h2>
       <Filter />
-      {isLoading && !error ? <Loader /> : <ContactList />}
+      {isLoading && !error && <Loader />}
+      <ContactList />
     </div>
   );
 };
