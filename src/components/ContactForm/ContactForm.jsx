@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
-import { nanoid } from 'nanoid';
+import { addContact } from 'redux/operations';
+// import { nanoid } from 'nanoid';
 import React from 'react';
 import style from './ContactForm.module.css';
 
 export const ContactForm = () => {
     const contacts = useSelector(getContacts);
     const dispatch = useDispatch();
-    const id = nanoid();
+    // const id = nanoid();
 
     const addNewContact = e => {
         e.preventDefault();
@@ -20,7 +20,6 @@ export const ContactForm = () => {
         let onTheList = false;
 
         const newContact = {
-            id: nanoid(),
             name: name,
             number: number
         };
@@ -41,10 +40,9 @@ export const ContactForm = () => {
 
     return (
         <form className={style.form} onSubmit={addNewContact}>
-            <label htmlFor={id}>Name</label>
+            <label>Name</label>
             <input
                 className={style.input}
-                id={id}
                 type="text"
                 name="name"
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -52,10 +50,9 @@ export const ContactForm = () => {
                 placeholder='Enter name'
                 required
             />
-            <label htmlFor={id}>Phone</label>
+            <label>Phone</label>
             <input
                 className={style.input}
-                id={id}
                 type="tel"
                 name="number"
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

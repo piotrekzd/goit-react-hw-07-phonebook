@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/contactsSlice';
+import { handleFilter } from 'redux/contactsSlice';
 import style from './Filter.module.css'
 
 export const Filter = () => {
@@ -7,7 +7,7 @@ export const Filter = () => {
     const dispatch = useDispatch();
     const onChange = e => {
         const value = e.target.value.toLowerCase();
-        dispatch(setFilter(value));
+        dispatch(handleFilter(value));
     };
     return (
         <label className={style.label}>Find contacts by name
